@@ -714,7 +714,7 @@ public class IPSRSSuratPemesanan extends javax.swing.JDialog {
         panelisi1.add(label17);
         label17.setBounds(340, 0, 40, 30);
 
-        tppn.setText("10");
+        tppn.setText("11");
         tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tppn.setName("tppn"); // NOI18N
         tppn.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -904,7 +904,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampilkan==true){
             try {
-                if(Valid.daysOld("./cache/suratpemesananipsrs.iyem")<4){
+                if(Valid.daysOld("./cache/suratpemesananipsrs.iyem")<8){
                     tampil2();
                 }else{
                     tampil();
@@ -1010,8 +1010,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     getData();                                                                     
                }else if(tbDokter.getSelectedColumn()==6){
                    try {
-                       tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
-                           (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100),tbDokter.getSelectedRow(),7);
+                       tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
+                           (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100)),tbDokter.getSelectedRow(),7);
                    } catch (Exception e) {
                        tbDokter.setValueAt(0,tbDokter.getSelectedRow(),7);
                    }
@@ -1039,8 +1039,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                         TCari.requestFocus();                                                
                    }else if(tbDokter.getSelectedColumn()==6){
                        try {
-                           tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
-                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100),tbDokter.getSelectedRow(),7);
+                           tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
+                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100)),tbDokter.getSelectedRow(),7);
                        } catch (Exception e) {
                            tbDokter.setValueAt(0,tbDokter.getSelectedRow(),7);
                        }
@@ -1094,8 +1094,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                        getData();  
                    }else if(tbDokter.getSelectedColumn()==6){
                        try {
-                           tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
-                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100),tbDokter.getSelectedRow(),7);
+                           tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString())*
+                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())/100)),tbDokter.getSelectedRow(),7);
                        } catch (Exception e) {
                            tbDokter.setValueAt(0,tbDokter.getSelectedRow(),7);
                        }                       
@@ -1539,7 +1539,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         LTotal2.setText(Valid.SetAngka(ttl));
         ppn=0;
         if(!tppn.getText().equals("")){
-            ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
+            ppn=Math.round((Double.parseDouble(tppn.getText())/100) *(ttl));
             LPpn.setText(Valid.SetAngka(ppn));
             LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
         }

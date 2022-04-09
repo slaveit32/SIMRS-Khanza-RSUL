@@ -515,7 +515,7 @@ public class TokoPembelian extends javax.swing.JDialog {
         panelisi1.add(label17);
         label17.setBounds(340, 0, 40, 30);
 
-        tppn.setText("10");
+        tppn.setText("11");
         tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tppn.setName("tppn"); // NOI18N
         tppn.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -891,8 +891,8 @@ private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                         getData();  
                    }else if(tbDokter.getSelectedColumn()==7){
                        setKonversi(tbDokter.getSelectedRow());
-                       tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
-                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())/100),tbDokter.getSelectedRow(),8);
+                       tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
+                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())/100)),tbDokter.getSelectedRow(),8);
                        getData();
                    }
             } catch (java.lang.NullPointerException e) {
@@ -912,7 +912,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                    }else if(tbDokter.getSelectedColumn()==7){
                        setKonversi(tbDokter.getSelectedRow());
                        if(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())>0){
-                           tbDokter.setValueAt((Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
+                           tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
                                (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())/100)),tbDokter.getSelectedRow(),8);
                        }
                        getData();
@@ -934,8 +934,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                    }else if((tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)){
                        setKonversi(tbDokter.getSelectedRow());
                        if(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())>0){
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
-                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())/100),tbDokter.getSelectedRow(),8);    
+                        tbDokter.setValueAt(Math.round(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())*
+                               (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())/100)),tbDokter.getSelectedRow(),8);    
                        }
                        getData();
                    }
@@ -1234,7 +1234,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         LTotal2.setText(Valid.SetAngka(ttl));
         ppn=0;
         if(!tppn.getText().equals("")){
-            ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
+            ppn=Math.round((Double.parseDouble(tppn.getText())/100) *(ttl));
             LPpn.setText(Valid.SetAngka(ppn));
             LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
         }
@@ -1244,7 +1244,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        tppn.setText("10");
+        tppn.setText("11");
         Meterai.setText("0");
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);

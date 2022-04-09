@@ -31,7 +31,9 @@ import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.ApotekBPJSCekReferensiDPHO;
+import bridging.ApotekBPJSCekReferensiFaskes;
 import bridging.ApotekBPJSCekReferensiPoli;
+import bridging.ApotekBPJSCekReferensiSpesialistik;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekDataSEPInternal;
 import bridging.BPJSCekDetailSEP2;
@@ -613,6 +615,7 @@ import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgKategoriPemasukan;
 import keuangan.DlgKategoriPengeluaran;
+import keuangan.DlgLhtBRIVA;
 import keuangan.DlgLhtBankJateng;
 import keuangan.DlgOmsetPenerimaan;
 import keuangan.DlgPembayaranPerAKunBayar4;
@@ -1715,7 +1718,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/02/2022" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/03/2022" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6759,7 +6762,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("::[ Khanza SIMKES 2020 ]::");
+        setTitle("::[ Khanza SIMKES 2022 ]::");
         setBackground(new java.awt.Color(255, 254, 254));
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -18221,6 +18224,39 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSReferensiFaskesApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSCekReferensiFaskes form=new ApotekBPJSCekReferensiFaskes(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBPJSReferensiSpesialistikApotekActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ApotekBPJSCekReferensiSpesialistik form=new ApotekBPJSCekReferensiSpesialistik(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPembayaranBRIVAActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgLhtBRIVA form=new DlgLhtBRIVA(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -18859,7 +18895,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnStokAkhirFarmasiPerTanggal,btnRiwayatKamarPasien,btnAuditKepatuhanAPD,btnUjiFungsiKFR,btnKategoriPengeluaranHarian,btnKategoriPemasukanLian,
             btnPembayaranAkunBayar5,btnRuangOperasi,btnJasaTindakanPasien,btnTelaahResep,btnPermintaanResepPulang,btnResumePasienRanap,
             btnRekapJasaDokter,btnStatusDataRM,btnRingkasanBiayaObatPasienPerTanggal,btnMasterMasalahKeperawatanIGD,btnPenilaianAwalKeperawatanIGD,
-            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter;
+            btnBPJSReferensiDPHOApotek,btnBPJSReferensiPoliApotek,btnBayarJMDokter,btnBPJSReferensiFaskesApotek,btnBPJSReferensiSpesialistikApotek,
+            btnPembayaranBRIVA;
     
     public void isWall(){
         try{            
@@ -20819,6 +20856,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                Panelmenu.add(btnPembayaranBankJateng); 
                jmlmenu++;
             }
+            
+            if(akses.getpembayaran_briva()==true){
+               Panelmenu.add(btnPembayaranBRIVA); 
+               jmlmenu++;
+            }
 
             if(akses.gethutang_obat()==true){
                 Panelmenu.add(btnHutangObat);
@@ -21152,6 +21194,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getbpjs_task_id()==true){
+                Panelmenu.add(btnBPJSTaskIDMobileJKN);
+                jmlmenu++;
+            }
+            
             if(akses.getbpjs_referensi_dpho_apotek()==true){
                 Panelmenu.add(btnBPJSReferensiDPHOApotek);
                 jmlmenu++;
@@ -21162,8 +21209,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getbpjs_task_id()==true){
-                Panelmenu.add(btnBPJSTaskIDMobileJKN);
+            if(akses.getbpjs_referensi_faskes_apotek()==true){
+                Panelmenu.add(btnBPJSReferensiFaskesApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_referensi_spesialistik_apotek()==true){
+                Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
                 jmlmenu++;
             }
             
@@ -24806,6 +24858,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
            jmlmenu++;
         }
 
+        if(akses.getpembayaran_briva()==true){
+           Panelmenu.add(btnPembayaranBRIVA); 
+           jmlmenu++;
+        }
+        
         if(akses.gethutang_obat()==true){
             Panelmenu.add(btnHutangObat);
             jmlmenu++;
@@ -25136,6 +25193,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBPJSReferensiJadwalHFIS);
             jmlmenu++;
         }
+
+        if(akses.getbpjs_task_id()==true){
+            Panelmenu.add(btnBPJSTaskIDMobileJKN);
+            jmlmenu++;
+        }
         
         if(akses.getbpjs_referensi_dpho_apotek()==true){
             Panelmenu.add(btnBPJSReferensiDPHOApotek);
@@ -25147,11 +25209,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
-        if(akses.getbpjs_task_id()==true){
-            Panelmenu.add(btnBPJSTaskIDMobileJKN);
+        if(akses.getbpjs_referensi_faskes_apotek()==true){
+            Panelmenu.add(btnBPJSReferensiFaskesApotek);
             jmlmenu++;
         }
 
+        if(akses.getbpjs_referensi_spesialistik_apotek()==true){
+            Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+            jmlmenu++;
+        }
+        
         if(akses.getreklasifikasi_ralan()==true){
             Panelmenu.add(btnReklasifikasiRalan);
             jmlmenu++;
@@ -29518,6 +29585,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getpembayaran_briva()==true){
+            if(btnPembayaranBRIVA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranBRIVA); 
+                jmlmenu++;
+            }                
+        }
 
         if(akses.gethutang_obat()==true){
             if(btnHutangObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -29981,6 +30055,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getbpjs_task_id()==true){
+            if(btnBPJSTaskIDMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSTaskIDMobileJKN);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getbpjs_referensi_dpho_apotek()==true){
             if(btnBPJSReferensiDPHOApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiDPHOApotek);
@@ -29995,9 +30076,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getbpjs_task_id()==true){
-            if(btnBPJSTaskIDMobileJKN.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnBPJSTaskIDMobileJKN);
+        if(akses.getbpjs_referensi_faskes_apotek()==true){
+            if(btnBPJSReferensiFaskesApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiFaskesApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbpjs_referensi_spesialistik_apotek()==true){
+            if(btnBPJSReferensiSpesialistikApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
                 jmlmenu++;
             }                
         }
@@ -35191,7 +35279,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalKeperawatanIGD.addActionListener(this::btnPenilaianAwalKeperawatanIGDActionPerformed);
         
         btnBPJSReferensiDPHOApotek = new widget.ButtonBig();
-        btnBPJSReferensiDPHOApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiDPHOApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
         btnBPJSReferensiDPHOApotek.setText("Referensi DPHO Apotek BPJS");
         btnBPJSReferensiDPHOApotek.setIconTextGap(0);
         btnBPJSReferensiDPHOApotek.setName("btnBPJSReferensiDPHOApotek"); 
@@ -35199,7 +35287,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSReferensiDPHOApotek.addActionListener(this::btnBPJSReferensiDPHOApotekActionPerformed);
         
         btnBPJSReferensiPoliApotek = new widget.ButtonBig();
-        btnBPJSReferensiPoliApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/vclaim.png")));
+        btnBPJSReferensiPoliApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
         btnBPJSReferensiPoliApotek.setText("Referensi Poli Apotek BPJS");
         btnBPJSReferensiPoliApotek.setIconTextGap(0);
         btnBPJSReferensiPoliApotek.setName("btnBPJSReferensiPoliApotek"); 
@@ -35213,6 +35301,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarJMDokter.setName("btnBayarJMDokter"); 
         btnBayarJMDokter.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBayarJMDokter.addActionListener(this::btnBayarJMDokterActionPerformed);
+        
+        btnBPJSReferensiFaskesApotek = new widget.ButtonBig();
+        btnBPJSReferensiFaskesApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSReferensiFaskesApotek.setText("Referensi Faskes Apotek BPJS");
+        btnBPJSReferensiFaskesApotek.setIconTextGap(0);
+        btnBPJSReferensiFaskesApotek.setName("btnBPJSReferensiFaskesApotek"); 
+        btnBPJSReferensiFaskesApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiFaskesApotek.addActionListener(this::btnBPJSReferensiFaskesApotekActionPerformed);
+        
+        btnBPJSReferensiSpesialistikApotek = new widget.ButtonBig();
+        btnBPJSReferensiSpesialistikApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_apotek.png")));
+        btnBPJSReferensiSpesialistikApotek.setText("Referensi Spesialistik Apotek BPJS");
+        btnBPJSReferensiSpesialistikApotek.setIconTextGap(0);
+        btnBPJSReferensiSpesialistikApotek.setName("btnBPJSReferensiSpesialistikApotek"); 
+        btnBPJSReferensiSpesialistikApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSReferensiSpesialistikApotek.addActionListener(this::btnBPJSReferensiSpesialistikApotekActionPerformed);
+        
+        btnPembayaranBRIVA = new widget.ButtonBig();
+        btnPembayaranBRIVA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_wallet_3440917.png")));
+        btnPembayaranBRIVA.setText("Pembayaran BRIVA");
+        btnPembayaranBRIVA.setIconTextGap(0);
+        btnPembayaranBRIVA.setName("btnPembayaranBRIVA"); 
+        btnPembayaranBRIVA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranBRIVA.addActionListener(this::btnPembayaranBRIVAActionPerformed);
     }
     
 }

@@ -633,7 +633,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi4.add(label24);
-        label24.setBounds(187, 10, 45, 23);
+        label24.setBounds(183, 10, 45, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -674,7 +674,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         panelisi4.add(label21);
         label21.setBounds(0, 10, 53, 23);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Dibayar", "Belum Dibayar", "Belum Lunas" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Dibayar", "Belum Dibayar", "Belum Lunas", "Titip Faktur" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(40, 23));
         panelisi4.add(Status);
@@ -1210,14 +1210,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
           int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, yakin mau dihapus...??","Konfirmasi",JOptionPane.YES_NO_OPTION);
           if (reply == JOptionPane.YES_OPTION) {
               try {
-                  pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status,no_order from pemesanan where no_faktur=?");
+                  pscaripesan=koneksi.prepareStatement("select pemesanan.no_faktur, pemesanan.tagihan, pemesanan.kd_bangsal,pemesanan.tgl_faktur,pemesanan.status,pemesanan.no_order from pemesanan where pemesanan.no_faktur=?");
                   try {
                      pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                      rs=pscaripesan.executeQuery();
                      if(rs.next()){
                          Sequel.AutoComitFalse();
                          sukses=true;
-                         psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2,no_batch,no_faktur from detailpesan where no_faktur=? ");
+                         psdetailpesan=koneksi.prepareStatement("select detailpesan.kode_brng,detailpesan.jumlah2,detailpesan.no_batch,detailpesan.no_faktur from detailpesan where detailpesan.no_faktur=? ");
                          try {
                              psdetailpesan.setString(1,rs.getString(1));
                              rs2=psdetailpesan.executeQuery();
@@ -1254,10 +1254,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                          if(sukses==true){
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("tagihan")
+                                Sequel.cariIsi("select set_akun.Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("tagihan")
                             });    
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
+                                Sequel.cariIsi("select set_akun.Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
                             }); 
                             sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode()); 
                          }

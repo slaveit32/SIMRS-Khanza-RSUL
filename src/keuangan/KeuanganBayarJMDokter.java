@@ -1058,8 +1058,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','0','"+totalrawatinap+"'","kredit=kredit+'"+(totalrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"'");                               
                     }
                     if(totallabrawatjalan>0){
-                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
                         Sequel.menyimpan("tampjurnal","'"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"','Utang Jasa Medik Dokter Laborat Ralan','"+totallabrawatjalan+"','0'","debet=debet+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Utang_Jasa_Medik_Dokter_Laborat_Ralan+"'");                           
+                        Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Beban Jasa Medik Dokter Laborat Ralan','0','"+totallabrawatjalan+"'","kredit=kredit+'"+(totallabrawatjalan)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");    
                     }
                     if(totallabrawatinap>0){
                         Sequel.menyimpan("tampjurnal","'"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+totallabrawatinap+"'","kredit=kredit+'"+(totallabrawatinap)+"'","kd_rek='"+form.Beban_Jasa_Medik_Dokter_Laborat_Ranap+"'");    
@@ -1242,7 +1242,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Sequel.queryu("truncate table temporary");
                 //"P","Tanggal","Jam","No.Rawat","No.RM","Nama Pasien","Kode","Tindakan Medis","Status","Jasa Medis","Id Detail"
-                for(i=1;i<tabMode.getRowCount();i++){  
+                for(i=0;i<tabMode.getRowCount();i++){  
                     if(tabMode.getValueAt(i,0).toString().equals("true")){
                         Sequel.menyimpan("temporary","'0','"+
                             tabMode.getValueAt(i,1).toString().replaceAll("'","`")+" "+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+

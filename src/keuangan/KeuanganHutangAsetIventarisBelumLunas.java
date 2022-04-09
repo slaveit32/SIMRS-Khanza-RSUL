@@ -49,7 +49,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private InventarisCariSuplier suplier=new InventarisCariSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
-    private String koderekening="",tanggaldatang="",tanggaltempo="";
+    private String koderekening="",tanggaldatang="",tanggaltempo="",Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select Kontra_Penerimaan_AsetInventaris from set_akun");
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
@@ -1032,7 +1032,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             } 
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                tabMode.getValueAt(i,14).toString(),"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
+                                Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",tabMode.getValueAt(i,10).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,AkunBayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()
@@ -1278,22 +1278,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
                     "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
                     "and inventaris_pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_faktur like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.no_order like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_pemesanan.tgl_tempo like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and inventaris_suplier.nama_suplier like ? or "+
-                    tanggaldatang+tanggaltempo+"inventaris_pemesanan.status<>'Sudah Dibayar' and inventaris_suplier.nama_suplier like ? and petugas.nama like ? order by inventaris_pemesanan.tgl_tempo ");
+                    tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
+                    "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
             try {
                 ps.setString(1,"%"+nmsup.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmsup.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,"%"+nmsup.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 sisahutang=0;
                 cicilan=0;
