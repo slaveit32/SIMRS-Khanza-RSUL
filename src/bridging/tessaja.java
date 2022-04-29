@@ -10,9 +10,10 @@ package bridging;
  * @author khanzasoft
  */
 public class tessaja {
-    public static ApiBRI api=new ApiBRI();
+    
+    private static ApiBRI apibri=new ApiBRI();
     public static void main(String[] args) {
-         api.buatVA("2022011600003","Paijo","225000","tes");
+         apibri.statusVA("2204230001");
     }
     
 }

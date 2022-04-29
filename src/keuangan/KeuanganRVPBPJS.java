@@ -900,10 +900,10 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             row=tabMode.getRowCount();
             ttlpiutang=0;ttliur=0;ttlsudahdibayar=0;ttlsisapiutang=0;ttlinacbg=0;total=0;
-            for(int i=0;i<row;i++){  
+            for(i=0;i<row;i++){  
                 sisapiutang=0;
                 try {
                     sisapiutang=Double.parseDouble(tabMode.getValueAt(i,10).toString());
@@ -916,7 +916,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 ttlsisapiutang=ttlsisapiutang+Double.parseDouble(tabMode.getValueAt(i,8).toString());
                 ttlinacbg=ttlinacbg+Double.parseDouble(tabMode.getValueAt(i,9).toString());
                 total=total+sisapiutang;
-                Sequel.menyimpan("temporary","'0','"+
+                Sequel.menyimpan("temporary","'"+i+"','"+
                             tabMode.getValueAt(i,1).toString()+"','"+
                             tabMode.getValueAt(i,2).toString()+"','"+
                             tabMode.getValueAt(i,3).toString()+"','"+
@@ -927,9 +927,10 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','"+
                             Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
                             Valid.SetAngka(sisapiutang)+"','"+
-                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutang"); 
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","RVP Piutang"); 
             }
-            Sequel.menyimpan("temporary","'0','Total :','','','','"+Valid.SetAngka(ttlpiutang)+"','"+Valid.SetAngka(ttliur)+"','"+Valid.SetAngka(ttlsudahdibayar)+"','"+Valid.SetAngka(ttlsisapiutang)+"','"+Valid.SetAngka(ttlinacbg)+"','"+Valid.SetAngka(total)+"','','','','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutangr"); 
+            i++;
+            Sequel.menyimpan("temporary","'"+i+"','Total :','','','','"+Valid.SetAngka(ttlpiutang)+"','"+Valid.SetAngka(ttliur)+"','"+Valid.SetAngka(ttlsudahdibayar)+"','"+Valid.SetAngka(ttlsisapiutang)+"','"+Valid.SetAngka(ttlinacbg)+"','"+Valid.SetAngka(total)+"','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","RVP Piutangr"); 
             
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",akses.getnamars());
@@ -939,7 +940,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRVPPiutang.jasper","report","::[ Data Piutang BPJS Sebelum RVP ]::",param);
+            Valid.MyReportqry("rptRVPPiutang.jasper","report","::[ Data Piutang BPJS Sebelum RVP ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1891,17 +1892,21 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         for(i=0;i<tbBangsal.getRowCount();i++){
             tbBangsal.setValueAt(false,i,0);
             getdata(i);
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         for(i=0;i<tbBangsal.getRowCount();i++){
             tbBangsal.setValueAt(true,i,0);
             getdata(i);
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
     private void ppUmbalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUmbalActionPerformed
@@ -1909,6 +1914,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         jfc.addChoosableFileFilter(excelFilter);
         if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             String f = jfc.getSelectedFile().toString();
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try {
                 Scanner sc = new Scanner(new File(f));  
                 sc.useDelimiter(";");
@@ -2161,6 +2167,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_ppUmbalActionPerformed
 

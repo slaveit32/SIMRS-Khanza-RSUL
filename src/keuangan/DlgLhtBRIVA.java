@@ -2,6 +2,7 @@
 
 package keuangan;
 
+import bridging.ApiBRI;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -34,6 +35,7 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private double total=0;
+    private ApiBRI apibri=new ApiBRI();
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -115,6 +117,8 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
                 }
             });
         }  
+        
+        DlgSinkron.setSize(330,115);
     }
     
 
@@ -128,6 +132,15 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
+        DlgSinkron = new javax.swing.JDialog();
+        internalFrame4 = new widget.InternalFrame();
+        panelBiasa2 = new widget.PanelBiasa();
+        TglMulai = new widget.Tanggal();
+        BtnPrint2 = new widget.Button();
+        BtnKeluar2 = new widget.Button();
+        jLabel32 = new widget.Label();
+        TglAkhir = new widget.Tanggal();
+        jLabel33 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -141,11 +154,83 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         jLabel10 = new javax.swing.JLabel();
+        BtnPrint1 = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
+
+        DlgSinkron.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgSinkron.setName("DlgSinkron"); // NOI18N
+        DlgSinkron.setUndecorated(true);
+        DlgSinkron.setResizable(false);
+
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sinkronkan Dengan Data Pembayaran BRIVA  ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelBiasa2.setName("panelBiasa2"); // NOI18N
+        panelBiasa2.setLayout(null);
+
+        TglMulai.setForeground(new java.awt.Color(50, 70, 50));
+        TglMulai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2022" }));
+        TglMulai.setDisplayFormat("dd-MM-yyyy");
+        TglMulai.setName("TglMulai"); // NOI18N
+        TglMulai.setOpaque(false);
+        panelBiasa2.add(TglMulai);
+        TglMulai.setBounds(70, 10, 100, 23);
+
+        BtnPrint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnPrint2.setMnemonic('T');
+        BtnPrint2.setText("Sinkron");
+        BtnPrint2.setToolTipText("Alt+T");
+        BtnPrint2.setName("BtnPrint2"); // NOI18N
+        BtnPrint2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrint2ActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnPrint2);
+        BtnPrint2.setBounds(10, 50, 100, 30);
+
+        BtnKeluar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnKeluar2.setMnemonic('U');
+        BtnKeluar2.setText("Tutup");
+        BtnKeluar2.setToolTipText("Alt+U");
+        BtnKeluar2.setName("BtnKeluar2"); // NOI18N
+        BtnKeluar2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluar2ActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnKeluar2);
+        BtnKeluar2.setBounds(210, 50, 100, 30);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("s/d");
+        jLabel32.setName("jLabel32"); // NOI18N
+        panelBiasa2.add(jLabel32);
+        jLabel32.setBounds(176, 10, 20, 23);
+
+        TglAkhir.setForeground(new java.awt.Color(50, 70, 50));
+        TglAkhir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-04-2022" }));
+        TglAkhir.setDisplayFormat("dd-MM-yyyy");
+        TglAkhir.setName("TglAkhir"); // NOI18N
+        TglAkhir.setOpaque(false);
+        panelBiasa2.add(TglAkhir);
+        TglAkhir.setBounds(200, 10, 100, 23);
+
+        jLabel33.setText("Tanggal :");
+        jLabel33.setName("jLabel33"); // NOI18N
+        panelBiasa2.add(jLabel33);
+        jLabel33.setBounds(0, 10, 66, 23);
+
+        internalFrame4.add(panelBiasa2, java.awt.BorderLayout.CENTER);
+
+        DlgSinkron.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -199,7 +284,7 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
         panelGlass5.add(label17);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(140, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -245,8 +330,26 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel10.setPreferredSize(new java.awt.Dimension(20, 23));
         panelGlass5.add(jLabel10);
+
+        BtnPrint1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnPrint1.setMnemonic('T');
+        BtnPrint1.setText("Sinkron Bank");
+        BtnPrint1.setToolTipText("Alt+T");
+        BtnPrint1.setName("BtnPrint1"); // NOI18N
+        BtnPrint1.setPreferredSize(new java.awt.Dimension(130, 30));
+        BtnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrint1ActionPerformed(evt);
+            }
+        });
+        BtnPrint1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPrint1KeyPressed(evt);
+            }
+        });
+        panelGlass5.add(BtnPrint1);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -324,6 +427,7 @@ public final class DlgLhtBRIVA extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        DlgSinkron.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -373,6 +477,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
+        DlgSinkron.setLocationRelativeTo(internalFrame1);
+        DlgSinkron.setVisible(true);
+    }//GEN-LAST:event_BtnPrint1ActionPerformed
+
+    private void BtnPrint1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPrint1KeyPressed
+
+    private void BtnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint2ActionPerformed
+        apibri.sinkronVA(Valid.SetTgl(TglMulai.getSelectedItem()+""),Valid.SetTgl(TglAkhir.getSelectedItem()+""));
+    }//GEN-LAST:event_BtnPrint2ActionPerformed
+
+    private void BtnKeluar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar2ActionPerformed
+        DlgSinkron.dispose();
+    }//GEN-LAST:event_BtnKeluar2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -393,17 +514,27 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluar2;
     private widget.Button BtnPrint;
+    private widget.Button BtnPrint1;
+    private widget.Button BtnPrint2;
+    private javax.swing.JDialog DlgSinkron;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.Tanggal TglAkhir;
+    private widget.Tanggal TglMulai;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame4;
     private javax.swing.JLabel jLabel10;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelGlass5;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables

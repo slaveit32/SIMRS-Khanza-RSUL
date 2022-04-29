@@ -457,6 +457,16 @@ public class koneksiDB {
         return var;
     }
     
+    public static String USERKEYAPIPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERKEYAPIPCARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String PASSPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -671,6 +681,16 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=prop.getProperty("BASENOREG");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String VALIDASIULANGBERIOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("VALIDASIULANGBERIOBAT");
         }catch(Exception e){
             var=""; 
         }
