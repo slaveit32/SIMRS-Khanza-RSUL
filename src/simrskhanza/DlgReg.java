@@ -7495,7 +7495,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 Valid.MyReportqry("rptBarcodeRawat.jasper","report","::[ Barcode No.Rawat ]::",
-                        "select reg_periksa.no_rawat from reg_periksa where no_rawat='"+TNoRw.getText()+"'",param); 
+                        "SELECT reg_periksa.no_rawat, pasien.alamat, pasien.no_tlp FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis WHERE no_rawat ='"+TNoRw.getText()+"'",param); 
                 this.setCursor(Cursor.getDefaultCursor());
             }  
     }//GEN-LAST:event_MnBarcodeActionPerformed

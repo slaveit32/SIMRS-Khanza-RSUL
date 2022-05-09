@@ -865,7 +865,7 @@
                                             <Component class="widget.Label" name="label11">
                                               <Properties>
                                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                                  <Color blue="0" green="0" red="aa" type="rgb"/>
+                                                  <Color blue="D0" green="3e" red="00" type="rgb"/>
                                                 </Property>
                                                 <Property name="text" type="java.lang.String" value="Key Word :"/>
                                                 <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
@@ -877,7 +877,7 @@
                                             <Component class="widget.TextBox" name="TCariSkala1">
                                               <Properties>
                                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                                  <Color blue="0" green="0" red="aa" type="rgb"/>
+                                                  <Color blue="D0" green="3e" red="00" type="rgb"/>
                                                 </Property>
                                                 <Property name="toolTipText" type="java.lang.String" value="Alt+C"/>
                                                 <Property name="name" type="java.lang.String" value="TCariSkala1" noResource="true"/>
@@ -981,7 +981,7 @@
                                                 <Component class="widget.Table" name="tbSkala1">
                                                   <Properties>
                                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                                      <Color blue="0" green="0" red="aa" type="rgb"/>
+                                                      <Color blue="D0" green="3e" red="00" type="rgb"/>
                                                     </Property>
                                                     <Property name="name" type="java.lang.String" value="tbSkala1" noResource="true"/>
                                                     <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

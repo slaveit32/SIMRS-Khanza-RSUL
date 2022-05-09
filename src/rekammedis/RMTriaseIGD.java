@@ -190,7 +190,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 column.setPreferredWidth(340);
             }
         }
-        tbSkala1.getTableHeader().setForeground(new Color(170,00,0));
+        tbSkala1.getTableHeader().setForeground(new Color(0,62,208));
         tbSkala1.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeSkala2=new DefaultTableModel(null,new Object[]{
@@ -921,7 +921,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel29.setBounds(0, 40, 65, 23);
 
         buttonGroup1.add(PrimerResusitasi);
-        PrimerResusitasi.setForeground(new java.awt.Color(170, 0, 0));
+        PrimerResusitasi.setForeground(new java.awt.Color(0, 62, 208));
         PrimerResusitasi.setSelected(true);
         PrimerResusitasi.setText("Ruang Resusitasi");
         PrimerResusitasi.setName("PrimerResusitasi"); // NOI18N
@@ -1056,13 +1056,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelisi6.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label11.setForeground(new java.awt.Color(170, 0, 0));
+        label11.setForeground(new java.awt.Color(0, 62, 208));
         label11.setText("Key Word :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi6.add(label11);
 
-        TCariSkala1.setForeground(new java.awt.Color(170, 0, 0));
+        TCariSkala1.setForeground(new java.awt.Color(0, 62, 208));
         TCariSkala1.setToolTipText("Alt+C");
         TCariSkala1.setName("TCariSkala1"); // NOI18N
         TCariSkala1.setPreferredSize(new java.awt.Dimension(200, 23));
@@ -1116,11 +1116,11 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         });
 
         Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
-        Scroll3.setForeground(new java.awt.Color(170, 0, 0));
+        Scroll3.setForeground(new java.awt.Color(0, 62, 208));
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbSkala1.setForeground(new java.awt.Color(170, 0, 0));
+        tbSkala1.setForeground(new java.awt.Color(0, 62, 208));
         tbSkala1.setName("tbSkala1"); // NOI18N
         tbSkala1.setSelectionForeground(new java.awt.Color(0, 255, 0));
         Scroll3.setViewportView(tbSkala1);
@@ -2746,7 +2746,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         "<td valign='top' cellpadding='0' cellspacing='0'>"+
                                             "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Keputusan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>Zona Merah "+rs.getString("plan")+"</td>"+
+                                                    "<td width='34%' valign='top'>Keputusan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>Zona "+rs.getString("plan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
                                                     "<td width='34%' valign='top'>Tanggal & Jam</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("tanggaltriase")+"</td>"+
@@ -3733,8 +3733,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
     private void TabSkala1dan2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabSkala1dan2MouseClicked
         if(TabSkala1dan2.getSelectedIndex()==0){
-            label11.setForeground(new Color(170,00,0));
-            TCariSkala1.setForeground(new Color(170,00,0));
+            label11.setForeground(new Color(0,62,208));
+            TCariSkala1.setForeground(new Color(0,62,208));
             BtnTambahSkala1.setEnabled(akses.getmaster_triase_skala1());
             PrimerResusitasi.setSelected(true);
         }else if(TabSkala1dan2.getSelectedIndex()==1){
@@ -5306,14 +5306,14 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
-                                        "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='center'>Immediate/Segera</td>"+
+                                        "<td valign='middle' bgcolor='#003ed0' color='ffffff' align='center'>Immediate/Segera</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
                                     htmlContent.append(                             
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
-                                            "<td valign='middle' bgcolor='#AA0000' color='ffffff'>"+
+                                            "<td valign='middle' bgcolor='#003ed0' color='ffffff'>"+
                                                 "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"
                                     );
                                     ps3=koneksi.prepareStatement(
@@ -5328,7 +5328,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         while(rs3.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala1")+"</td>"+
+                                                    "<td border='0' valign='middle' bgcolor='#003ed0' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala1")+"</td>"+
                                                 "</tr>"
                                             );
                                         }
@@ -5348,7 +5348,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                         "</tr>"
                                     );
                                 }
-                                keputusan="#AA0000";
+                                keputusan="#003ed0";
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -5432,7 +5432,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         htmlContent.append(    
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Plan/Keputusan</td>"+
-                                "<td valign='middle' bgcolor='"+keputusan+"' color='ffffff'>Zona Merah "+rs.getString("plan")+"</td>"+
+                                "<td valign='middle' bgcolor='"+keputusan+"' color='ffffff'>Zona "+rs.getString("plan")+"</td>"+
                             "</tr>"+                       
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
