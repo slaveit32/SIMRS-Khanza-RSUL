@@ -688,7 +688,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.gabung_rm,user.ringkasan_biaya_obat_pasien_pertanggal,user.master_masalah_keperawatan_igd,user.penilaian_awal_keperawatan_igd,"+
                 "user.bpjs_referensi_dpho_apotek,user.bpjs_referensi_poli_apotek,user.bayar_jm_dokter,user.bpjs_referensi_faskes_apotek,user.bpjs_referensi_spesialistik_apotek,"+
                 "user.pembayaran_briva,user.penilaian_awal_keperawatan_ranap,user.nilai_penerimaan_vendor_farmasi_perbulan,user.akun_bayar_hutang,user.master_rencana_keperawatan,"+
-                "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.laporan_tahunan_igd,user.obat_bhp_tidakbergerak,user.ringkasan_hutang_vendor_farmasi,user.nilai_penerimaan_vendor_nonmedis_perbulan,"+
+                "user.ringkasan_hutang_vendor_nonmedis,user.master_rencana_keperawatan_anak,user.anggota_polri_dirawat,user.daftar_pasien_ranap_polri,user.soap_ralan_polri,"+
+                "user.soap_ranap_polri,user.laporan_penyakit_polri,user.jumlah_pengunjung_ralan_polri,user.catatan_observasi_igd,user.catatan_observasi_ranap,"+
+                "user.catatan_observasi_ranap_kebidanan,user.catatan_observasi_ranap_postpartum,user.penilaian_awal_medis_ralan_tht from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2085,6 +2088,22 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[I]Laporan Tahunan IGD",rs.getBoolean("laporan_tahunan_igd")});
                     }
                     
+                    if("[I]Anggota POLRI Dirawat".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Anggota POLRI Dirawat",rs.getBoolean("anggota_polri_dirawat")});
+                    }
+                    
+                    if("[I]Daftar Pasien Ranap POLRI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Daftar Pasien Ranap POLRI",rs.getBoolean("daftar_pasien_ranap_polri")});
+                    }
+                    
+                    if("[I]Laporan Penyakit POLRI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Laporan Penyakit POLRI",rs.getBoolean("laporan_penyakit_polri")});
+                    }
+                    
+                    if("[I]Jumlah Pengunjung Ralan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Jumlah Pengunjung Ralan POLRI",rs.getBoolean("jumlah_pengunjung_ralan_polri")});
+                    }
+                    
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Deposit Pasien",rs.getBoolean("deposit_pasien")});
                     }
@@ -2323,6 +2342,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Ringkasan Hutang Vendor Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Farmasi",rs.getBoolean("ringkasan_hutang_vendor_farmasi")});
+                    }
+                    
+                    if("[J]Ringkasan Hutang Vendor Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Ringkasan Hutang Vendor Non Medis",rs.getBoolean("ringkasan_hutang_vendor_nonmedis")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -3043,6 +3066,38 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Master Rencana Keperawatan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Master Rencana Keperawatan",rs.getBoolean("master_rencana_keperawatan")});
+                    }
+                    
+                    if("[L]Master Rencana Keperawatan Bayi/Anak".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Master Rencana Keperawatan Bayi/Anak",rs.getBoolean("master_rencana_keperawatan_anak")});
+                    }
+                    
+                    if("[L]SOAP Ralan Anggota POLRI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]SOAP Ralan Anggota POLRI",rs.getBoolean("soap_ralan_polri")});
+                    }
+                    
+                    if("[L]SOAP Ranap Anggota POLRI".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]SOAP Ranap Anggota POLRI",rs.getBoolean("soap_ranap_polri")});
+                    }
+                    
+                    if("[L]Catatan Observasi IGD".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Observasi IGD",rs.getBoolean("catatan_observasi_igd")});
+                    }
+                    
+                    if("[L]Catatan Observasi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Observasi Ranap",rs.getBoolean("catatan_observasi_ranap")});
+                    }
+                    
+                    if("[L]Catatan Observasi Ranap Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Observasi Ranap Kebidanan",rs.getBoolean("catatan_observasi_ranap_kebidanan")});
+                    }
+                    
+                    if("[L]Catatan Observasi Ranap Post Partum".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Catatan Observasi Ranap Post Partum",rs.getBoolean("catatan_observasi_ranap_postpartum")});
+                    }
+                    
+                    if("[L]Penilaian Awal Medis Ralan THT".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Medis Ralan THT",rs.getBoolean("penilaian_awal_medis_ralan_tht")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5360,6 +5415,22 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","laporan_tahunan_igd='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
+            if("[I]Anggota POLRI Dirawat".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","anggota_polri_dirawat='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Daftar Pasien Ranap POLRI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","daftar_pasien_ranap_polri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Laporan Penyakit POLRI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","laporan_penyakit_polri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Jumlah Pengunjung Ralan POLRI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","jumlah_pengunjung_ralan_polri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
             if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","deposit_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -5598,6 +5669,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Ringkasan Hutang Vendor Farmasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_farmasi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Ringkasan Hutang Vendor Non Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_hutang_vendor_nonmedis='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }
@@ -6322,6 +6397,38 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[L]Master Rencana Keperawatan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_rencana_keperawatan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Master Rencana Keperawatan Bayi/Anak".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_rencana_keperawatan_anak='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]SOAP Ralan Anggota POLRI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","soap_ralan_polri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]SOAP Ranap Anggota POLRI".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","soap_ranap_polri='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Observasi IGD".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_igd='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Observasi Ranap".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Observasi Ranap Kebidanan".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ranap_kebidanan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Catatan Observasi Ranap Post Partum".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_observasi_ranap_postpartum='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[L]Penilaian Awal Medis Ralan THT".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan_tht='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){

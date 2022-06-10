@@ -178,7 +178,10 @@ public final class akses {
             bpjs_referensi_poli_apotek=false,bayar_jm_dokter=false,bpjs_referensi_faskes_apotek=false,bpjs_referensi_spesialistik_apotek=false,
             pembayaran_briva=false,penilaian_awal_keperawatan_ranap=false,nilai_penerimaan_vendor_farmasi_perbulan=false,akun_bayar_hutang=false,
             master_rencana_keperawatan=false,laporan_tahunan_igd=false,obat_bhp_tidakbergerak=false,ringkasan_hutang_vendor_farmasi=false,
-            nilai_penerimaan_vendor_nonmedis_perbulan=false;
+            nilai_penerimaan_vendor_nonmedis_perbulan=false,ringkasan_hutang_vendor_nonmedis=false,anggota_polri_dirawat=false,daftar_pasien_ranap_polri=false,
+            soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false,jumlah_pengunjung_ralan_polri=false,
+            catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false,catatan_observasi_ranap_postpartum=false,
+            penilaian_awal_medis_ralan_tht=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1014,6 +1017,19 @@ public final class akses {
                         akses.obat_bhp_tidakbergerak=true;
                         akses.ringkasan_hutang_vendor_farmasi=true;
                         akses.nilai_penerimaan_vendor_nonmedis_perbulan=true;
+                        akses.ringkasan_hutang_vendor_nonmedis=true;
+                        akses.anggota_polri_dirawat=true;
+                        akses.daftar_pasien_ranap_polri=true;
+                        akses.soap_ralan_polri=true;
+                        akses.soap_ranap_polri=true;
+                        akses.laporan_penyakit_polri=true;
+                        akses.master_rencana_keperawatan_anak=true;
+                        akses.jumlah_pengunjung_ralan_polri=true;
+                        akses.catatan_observasi_igd=true;
+                        akses.catatan_observasi_ranap=true;
+                        akses.catatan_observasi_ranap_kebidanan=true;
+                        akses.catatan_observasi_ranap_postpartum=true;
+                        akses.penilaian_awal_medis_ralan_tht=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1833,6 +1849,19 @@ public final class akses {
                         akses.obat_bhp_tidakbergerak=rs2.getBoolean("obat_bhp_tidakbergerak");
                         akses.ringkasan_hutang_vendor_farmasi=rs2.getBoolean("ringkasan_hutang_vendor_farmasi");
                         akses.nilai_penerimaan_vendor_nonmedis_perbulan=rs2.getBoolean("nilai_penerimaan_vendor_nonmedis_perbulan");
+                        akses.ringkasan_hutang_vendor_nonmedis=rs2.getBoolean("ringkasan_hutang_vendor_nonmedis");
+                        akses.anggota_polri_dirawat=rs2.getBoolean("anggota_polri_dirawat");
+                        akses.daftar_pasien_ranap_polri=rs2.getBoolean("daftar_pasien_ranap_polri");
+                        akses.soap_ralan_polri=rs2.getBoolean("soap_ralan_polri");
+                        akses.soap_ranap_polri=rs2.getBoolean("soap_ranap_polri");
+                        akses.laporan_penyakit_polri=rs2.getBoolean("laporan_penyakit_polri");
+                        akses.master_rencana_keperawatan_anak=rs2.getBoolean("master_rencana_keperawatan_anak");
+                        akses.jumlah_pengunjung_ralan_polri=rs2.getBoolean("jumlah_pengunjung_ralan_polri");
+                        akses.catatan_observasi_igd=rs2.getBoolean("catatan_observasi_igd");
+                        akses.catatan_observasi_ranap=rs2.getBoolean("catatan_observasi_ranap");
+                        akses.catatan_observasi_ranap_kebidanan=rs2.getBoolean("catatan_observasi_ranap_kebidanan");
+                        akses.catatan_observasi_ranap_postpartum=rs2.getBoolean("catatan_observasi_ranap_postpartum");
+                        akses.penilaian_awal_medis_ralan_tht=rs2.getBoolean("penilaian_awal_medis_ralan_tht");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2650,6 +2679,19 @@ public final class akses {
                         akses.obat_bhp_tidakbergerak=false;
                         akses.ringkasan_hutang_vendor_farmasi=false;
                         akses.nilai_penerimaan_vendor_nonmedis_perbulan=false;
+                        akses.ringkasan_hutang_vendor_nonmedis=false;
+                        akses.anggota_polri_dirawat=false;
+                        akses.daftar_pasien_ranap_polri=false;
+                        akses.soap_ralan_polri=false;
+                        akses.soap_ranap_polri=false;
+                        akses.laporan_penyakit_polri=false;
+                        akses.master_rencana_keperawatan_anak=false;
+                        akses.jumlah_pengunjung_ralan_polri=false;
+                        akses.catatan_observasi_igd=false;
+                        akses.catatan_observasi_ranap=false;
+                        akses.catatan_observasi_ranap_kebidanan=false;
+                        akses.catatan_observasi_ranap_postpartum=false;
+                        akses.penilaian_awal_medis_ralan_tht=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3524,4 +3566,17 @@ public final class akses {
     public static boolean getobat_bhp_tidakbergerak(){return akses.obat_bhp_tidakbergerak;}
     public static boolean getringkasan_hutang_vendor_farmasi(){return akses.ringkasan_hutang_vendor_farmasi;}
     public static boolean getnilai_penerimaan_vendor_nonmedis_perbulan(){return akses.nilai_penerimaan_vendor_nonmedis_perbulan;}
+    public static boolean getringkasan_hutang_vendor_nonmedis(){return akses.ringkasan_hutang_vendor_nonmedis;}
+    public static boolean getanggota_polri_dirawat(){return akses.anggota_polri_dirawat;}
+    public static boolean getdaftar_pasien_ranap_polri(){return akses.daftar_pasien_ranap_polri;}
+    public static boolean getsoap_ralan_polri(){return akses.soap_ralan_polri;}
+    public static boolean getsoap_ranap_polri(){return akses.soap_ranap_polri;}
+    public static boolean getlaporan_penyakit_polri(){return akses.laporan_penyakit_polri;}
+    public static boolean getmaster_rencana_keperawatan_anak(){return akses.master_rencana_keperawatan_anak;}
+    public static boolean getjumlah_pengunjung_ralan_polri(){return akses.jumlah_pengunjung_ralan_polri;}
+    public static boolean getcatatan_observasi_igd(){return akses.catatan_observasi_igd;}
+    public static boolean getcatatan_observasi_ranap(){return akses.catatan_observasi_ranap;}
+    public static boolean getcatatan_observasi_ranap_kebidanan(){return akses.catatan_observasi_ranap_kebidanan;}
+    public static boolean getcatatan_observasi_ranap_postpartum(){return akses.catatan_observasi_ranap_postpartum;}
+    public static boolean getpenilaian_awal_medis_ralan_tht(){return akses.penilaian_awal_medis_ralan_tht;}
 }   

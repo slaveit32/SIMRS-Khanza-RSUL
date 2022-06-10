@@ -686,7 +686,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptResepPulang.jasper","report","::[ Data Resep Pulang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -818,7 +818,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("emailrs",akses.getemailrs());
             if(Sequel.cariInteger(
                     "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptItemResepPulang.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
                     "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
@@ -850,7 +850,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("emailrs",akses.getemailrs());
             if(Sequel.cariInteger(
                     "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptItemResepPulang2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_pulang.no_rawat,resep_pulang.tanggal,jenis.nama,"+
                     "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
@@ -883,7 +883,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("emailrs",akses.getemailrs());
             if(Sequel.cariInteger(
                     "select count(*) from resep_pulang where resep_pulang.no_rawat=? and resep_pulang.dosis<>''",TNoRw.getText())>0){
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptItemResepPulang3.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_pulang.no_rawat,resep_pulang.tanggal, "+
                     "reg_periksa.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
@@ -924,7 +924,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("peresep",Sequel.cariIsi("SELECT nm_dokter FROM permintaan_resep_pulang INNER JOIN dokter ON permintaan_resep_pulang.kd_dokter = dokter.kd_dokter WHERE permintaan_resep_pulang.no_rawat =? GROUP BY nm_dokter",TNoRw.getText()));
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",Sequel.cariIsi("SELECT kd_dokter FROM permintaan_resep_pulang WHERE permintaan_resep_pulang.no_rawat =? GROUP BY kd_dokter",TNoRw.getText()));
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+Sequel.cariIsi("SELECT nm_dokter FROM permintaan_resep_pulang INNER JOIN dokter ON permintaan_resep_pulang.kd_dokter = dokter.kd_dokter WHERE permintaan_resep_pulang.no_rawat =? GROUP BY nm_dokter",TNoRw.getText())+"\nID "+(finger.equals("")?Sequel.cariIsi("SELECT kd_dokter FROM permintaan_resep_pulang WHERE permintaan_resep_pulang.no_rawat =? GROUP BY kd_dokter", TNoRw.getText()):finger)+"\n"+Sequel.cariIsi("select tanggal from resep_pulang where no_rawat=? group by tanggal",TNoRw.getText()));
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
  
                 Valid.MyReportqry("rptLembarObatPulang.jasper","report","::[ Lembar Pemberian Obat ]::",
                     "select databarang.nama_brng,resep_pulang.dosis,resep_pulang.jml_barang,kodesatuan.satuan "+
@@ -962,7 +962,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("peresep",Sequel.cariIsi("SELECT nm_dokter FROM permintaan_resep_pulang INNER JOIN dokter ON permintaan_resep_pulang.kd_dokter = dokter.kd_dokter WHERE permintaan_resep_pulang.no_rawat =? GROUP BY nm_dokter",TNoRw.getText()));
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",Sequel.cariIsi("SELECT kd_dokter FROM permintaan_resep_pulang WHERE permintaan_resep_pulang.no_rawat =? GROUP BY kd_dokter",TNoRw.getText()));
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+Sequel.cariIsi("SELECT nm_dokter FROM permintaan_resep_pulang INNER JOIN dokter ON permintaan_resep_pulang.kd_dokter = dokter.kd_dokter WHERE permintaan_resep_pulang.no_rawat =? GROUP BY nm_dokter",TNoRw.getText())+"\nID "+(finger.equals("")?Sequel.cariIsi("SELECT kd_dokter FROM permintaan_resep_pulang WHERE permintaan_resep_pulang.no_rawat =? GROUP BY kd_dokter", TNoRw.getText()):finger)+"\n"+Sequel.cariIsi("select tanggal from resep_pulang where no_rawat=? group by tanggal",TNoRw.getText()));
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
  
                 Valid.MyReportqry("rptLembarObatPulang1.jasper","report","::[ Lembar Pemberian Obat ]::",
                     "select databarang.nama_brng,detail_permintaan_resep_pulang.dosis,detail_permintaan_resep_pulang.jml,kodesatuan.satuan "+

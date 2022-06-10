@@ -2730,6 +2730,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"beratBadan\": "+BeratBadan.getText()+"," +
                                     "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                                     "\"respRate\": "+Respiratory.getText()+"," +
+                                    "\"lingkarPerut\": 0," +
                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                     "\"rujukBalik\": 0," +
                                     "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
@@ -2979,6 +2980,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"beratBadan\": "+BeratBadan.getText()+"," +
                                         "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
                                         "\"respRate\": "+Respiratory.getText()+"," +
+                                        "\"lingkarPerut\": 0," +
                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                         "\"rujukBalik\": 0," +
                                         "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
@@ -4363,7 +4365,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"diastole\": "+tbPendaftaran.getValueAt(i,11).toString()+"," +
                                     "\"beratBadan\": "+tbPendaftaran.getValueAt(i,12).toString()+"," +
                                     "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
-                                    "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+"," +
+                                    "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+","+ 
+                                    "\"lingkarPerut\": 0," +
                                     "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
                                     "\"rujukBalik\": 0," +
                                     "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +
@@ -6768,6 +6771,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "\"beratBadan\": "+tbPendaftaran.getValueAt(i,12).toString()+"," +
                                                         "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
                                                         "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+"," +
+                                                        "\"lingkarPerut\": 0," +
                                                         "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
                                                         "\"rujukBalik\": 0," +
                                                         "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +

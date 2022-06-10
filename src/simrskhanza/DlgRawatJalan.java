@@ -59,6 +59,7 @@ import permintaan.DlgBookingOperasi;
 import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMMCU;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
@@ -69,6 +70,7 @@ import rekammedis.RMPenilaianAwalMedisIGD;
 import rekammedis.RMPenilaianAwalMedisRalanAnak;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
+import rekammedis.RMPenilaianAwalMedisRalanTHT;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
@@ -1450,6 +1452,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnRujukInternal = new widget.Button();
         BtnRujukKeluar = new widget.Button();
         BtnCatatan = new widget.Button();
+        BtnCatatanObservasiIGD = new widget.Button();
         BtnTriaseIGD = new widget.Button();
         BtnResume = new widget.Button();
         BtnAwalKeperawatanIGD = new widget.Button();
@@ -1461,6 +1464,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedis = new widget.Button();
         BtnAwalMedisKandungan = new widget.Button();
         BtnAwalMedisAnak = new widget.Button();
+        BtnAwalMedisTHT = new widget.Button();
         BtnAwalFisioterapi = new widget.Button();
         BtnUjiFungsiKFR = new widget.Button();
         BtnMedicalCheckUp = new widget.Button();
@@ -1631,7 +1635,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1645,7 +1649,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3352,7 +3356,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2022" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2022" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3704,6 +3708,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         FormMenu.add(BtnCatatan);
 
+        BtnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnCatatanObservasiIGD.setText("Catatan Observasi IGD");
+        BtnCatatanObservasiIGD.setFocusPainted(false);
+        BtnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnCatatanObservasiIGD.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnCatatanObservasiIGD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnCatatanObservasiIGD.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnCatatanObservasiIGD.setName("BtnCatatanObservasiIGD"); // NOI18N
+        BtnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnCatatanObservasiIGD.setRoundRect(false);
+        BtnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCatatanObservasiIGDActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnCatatanObservasiIGD);
+
         BtnTriaseIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnTriaseIGD.setText("Triase IGD");
         BtnTriaseIGD.setFocusPainted(false);
@@ -3890,6 +3911,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisAnak);
+
+        BtnAwalMedisTHT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalMedisTHT.setText("Awal Medis THT");
+        BtnAwalMedisTHT.setFocusPainted(false);
+        BtnAwalMedisTHT.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalMedisTHT.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisTHT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisTHT.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisTHT.setName("BtnAwalMedisTHT"); // NOI18N
+        BtnAwalMedisTHT.setPreferredSize(new java.awt.Dimension(180, 23));
+        BtnAwalMedisTHT.setRoundRect(false);
+        BtnAwalMedisTHT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalMedisTHTActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalMedisTHT);
 
         BtnAwalFisioterapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnAwalFisioterapi.setText("Awal Fisioterapi");
@@ -4458,9 +4496,19 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 }else{
                     for(i=0;i<tbPemeriksaan.getRowCount();i++){
                         if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                            Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+tbPemeriksaan.getValueAt(i,1).toString()+
-                                    "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(i,4).toString()+
-                                    "' and jam_rawat='"+tbPemeriksaan.getValueAt(i,5).toString()+"' ");
+                            if(akses.getkode().equals("Admin Utama")){
+                                Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+tbPemeriksaan.getValueAt(i,1).toString()+
+                                        "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(i,4).toString()+
+                                        "' and jam_rawat='"+tbPemeriksaan.getValueAt(i,5).toString()+"' ");
+                            }else{
+                                if(akses.getkode().equals(tbPemeriksaan.getValueAt(i,23).toString())){
+                                    Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+tbPemeriksaan.getValueAt(i,1).toString()+
+                                            "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(i,4).toString()+
+                                            "' and jam_rawat='"+tbPemeriksaan.getValueAt(i,5).toString()+"' ");
+                                }else{
+                                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter/petugas yang bersangkutan..!!");
+                                }
+                            }
                         }
                     }
                     tampilPemeriksaan();
@@ -5040,25 +5088,51 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             (!KdPeg.getText().trim().equals(""))||(!TPegawai.getText().trim().equals(""))||(!TInstruksi.getText().trim().equals(""))||
                             (!SpO2.getText().trim().equals(""))||(!TEvaluasi.getText().trim().equals(""))){
                         if(tbPemeriksaan.getSelectedRow()>-1){
-                            if(Sequel.mengedittf("pemeriksaan_ralan","no_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),1)+
-                                "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),4)+
-                                "' and jam_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5)+"'",
-                                "no_rawat='"+TNoRw.getText()+"',suhu_tubuh='"+TSuhu.getText()+"',tensi='"+TTensi.getText()+"',"+
-                                "keluhan='"+TKeluhan.getText()+"',pemeriksaan='"+TPemeriksaan.getText()+"',"+
-                                "nadi='"+TNadi.getText()+"',respirasi='"+TRespirasi.getText()+"',"+
-                                "tinggi='"+TTinggi.getText()+"',berat='"+TBerat.getText()+"',spo2='"+SpO2.getText()+"',"+
-                                "gcs='"+TGCS.getText()+"',kesadaran='"+cmbKesadaran.getSelectedItem()+"',"+
-                                "alergi='"+TAlergi.getText()+"',imun_ke='"+cmbImun.getSelectedItem()+"',"+
-                                "tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',"+
-                                "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',"+
-                                "rtl='"+TindakLanjut.getText()+"',penilaian='"+TPenilaian.getText()+"',"+
-                                "instruksi='"+TInstruksi.getText()+"',evaluasi='"+TEvaluasi.getText()+"',nip='"+KdPeg.getText()+"'")==true){
-                                    TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
-                                    TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
-                                    TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);
-                                    TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");
-                                    SpO2.setText("");TEvaluasi.setText("");tampilPemeriksaan();
-                            }                            
+                            if(akses.getkode().equals("Admin Utama")){
+                                if(Sequel.mengedittf("pemeriksaan_ralan","no_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),1)+
+                                    "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),4)+
+                                    "' and jam_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5)+"'",
+                                    "no_rawat='"+TNoRw.getText()+"',suhu_tubuh='"+TSuhu.getText()+"',tensi='"+TTensi.getText()+"',"+
+                                    "keluhan='"+TKeluhan.getText()+"',pemeriksaan='"+TPemeriksaan.getText()+"',"+
+                                    "nadi='"+TNadi.getText()+"',respirasi='"+TRespirasi.getText()+"',"+
+                                    "tinggi='"+TTinggi.getText()+"',berat='"+TBerat.getText()+"',spo2='"+SpO2.getText()+"',"+
+                                    "gcs='"+TGCS.getText()+"',kesadaran='"+cmbKesadaran.getSelectedItem()+"',"+
+                                    "alergi='"+TAlergi.getText()+"',imun_ke='"+cmbImun.getSelectedItem()+"',"+
+                                    "tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',"+
+                                    "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',"+
+                                    "rtl='"+TindakLanjut.getText()+"',penilaian='"+TPenilaian.getText()+"',"+
+                                    "instruksi='"+TInstruksi.getText()+"',evaluasi='"+TEvaluasi.getText()+"',nip='"+KdPeg.getText()+"'")==true){
+                                        TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
+                                        TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
+                                        TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);
+                                        TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");
+                                        SpO2.setText("");TEvaluasi.setText("");tampilPemeriksaan();
+                                }   
+                            }else{
+                                if(akses.getkode().equals(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),23).toString())){
+                                    if(Sequel.mengedittf("pemeriksaan_ralan","no_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),1)+
+                                        "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),4)+
+                                        "' and jam_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5)+"'",
+                                        "no_rawat='"+TNoRw.getText()+"',suhu_tubuh='"+TSuhu.getText()+"',tensi='"+TTensi.getText()+"',"+
+                                        "keluhan='"+TKeluhan.getText()+"',pemeriksaan='"+TPemeriksaan.getText()+"',"+
+                                        "nadi='"+TNadi.getText()+"',respirasi='"+TRespirasi.getText()+"',"+
+                                        "tinggi='"+TTinggi.getText()+"',berat='"+TBerat.getText()+"',spo2='"+SpO2.getText()+"',"+
+                                        "gcs='"+TGCS.getText()+"',kesadaran='"+cmbKesadaran.getSelectedItem()+"',"+
+                                        "alergi='"+TAlergi.getText()+"',imun_ke='"+cmbImun.getSelectedItem()+"',"+
+                                        "tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',"+
+                                        "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',"+
+                                        "rtl='"+TindakLanjut.getText()+"',penilaian='"+TPenilaian.getText()+"',"+
+                                        "instruksi='"+TInstruksi.getText()+"',evaluasi='"+TEvaluasi.getText()+"',nip='"+KdPeg.getText()+"'")==true){
+                                            TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
+                                            TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
+                                            TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);
+                                            TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");
+                                            SpO2.setText("");TEvaluasi.setText("");tampilPemeriksaan();
+                                    }   
+                                }else{
+                                    JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter/petugas yang bersangkutan..!!");
+                                }
+                            }                         
                         }else{
                             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data yang mau diganti..!!");
                             TCari.requestFocus();
@@ -6294,6 +6368,41 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAwalKeperawatanIGDActionPerformed
 
+    private void BtnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanObservasiIGDActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataCatatanObservasiIGD form=new RMDataCatatanObservasiIGD(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnCatatanObservasiIGDActionPerformed
+
+    private void BtnAwalMedisTHTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalMedisTHTActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanTHT form=new RMPenilaianAwalMedisRalanTHT(null,false);
+            form.isCek();
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalMedisTHTActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6322,10 +6431,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAwalMedisAnak;
     private widget.Button BtnAwalMedisIGD;
     private widget.Button BtnAwalMedisKandungan;
+    private widget.Button BtnAwalMedisTHT;
     private widget.Button BtnBatal;
     private widget.Button BtnBerkasDigital;
     private widget.Button BtnCari;
     private widget.Button BtnCatatan;
+    private widget.Button BtnCatatanObservasiIGD;
     private widget.Button BtnCopyResep;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -7024,7 +7135,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getresume_pasien()==true){
             tinggi=tinggi+24;
         }
-        BtnJadwalOperasi.setEnabled(akses.getbooking_operasi());   
+        BtnJadwalOperasi.setVisible(akses.getbooking_operasi());   
         if(akses.getbooking_operasi()==true){
             tinggi=tinggi+24;
         }
@@ -7046,6 +7157,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnUjiFungsiKFR.setVisible(akses.getuji_fungsi_kfr()); 
         if(akses.getuji_fungsi_kfr()==true){
+            tinggi=tinggi+24;
+        }
+        BtnCatatanObservasiIGD.setVisible(akses.getcatatan_observasi_igd()); 
+        if(akses.getcatatan_observasi_igd()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisTHT.setVisible(akses.getpenilaian_awal_medis_ralan_tht()); 
+        if(akses.getpenilaian_awal_medis_ralan_tht()==true){
             tinggi=tinggi+24;
         }
         
