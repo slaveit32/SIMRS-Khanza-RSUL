@@ -181,7 +181,11 @@ public final class akses {
             nilai_penerimaan_vendor_nonmedis_perbulan=false,ringkasan_hutang_vendor_nonmedis=false,anggota_polri_dirawat=false,daftar_pasien_ranap_polri=false,
             soap_ralan_polri=false,soap_ranap_polri=false,laporan_penyakit_polri=false,master_rencana_keperawatan_anak=false,jumlah_pengunjung_ralan_polri=false,
             catatan_observasi_igd=false,catatan_observasi_ranap=false,catatan_observasi_ranap_kebidanan=false,catatan_observasi_ranap_postpartum=false,
-            penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false;
+            penilaian_awal_medis_ralan_tht=false,penilaian_psikologi=false,audit_cuci_tangan_medis=false,audit_pembuangan_limbah=false,ruang_audit_kepatuhan=false,
+            audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false,
+            audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false,audit_fasilitas_apd=false,
+            audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false,
+            audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1032,6 +1036,26 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=true;
                         akses.penilaian_psikologi=true;
                         akses.audit_cuci_tangan_medis=true;
+                        akses.audit_pembuangan_limbah=true;
+                        akses.ruang_audit_kepatuhan=true;
+                        akses.audit_pembuangan_benda_tajam=true;
+                        akses.audit_penanganan_darah=true;
+                        akses.audit_pengelolaan_linen_kotor=true;
+                        akses.audit_penempatan_pasien=true;
+                        akses.audit_kamar_jenazah=true;
+                        akses.audit_bundle_iadp=true;
+                        akses.audit_bundle_ido=true;
+                        akses.audit_fasilitas_kebersihan_tangan=true;
+                        akses.audit_fasilitas_apd=true;
+                        akses.audit_pembuangan_limbah_cair_infeksius=true;
+                        akses.audit_sterilisasi_alat=true;
+                        akses.penilaian_awal_medis_ralan_psikiatri=true;
+                        akses.persetujuan_penolakan_tindakan=true;
+                        akses.audit_bundle_isk=true;
+                        akses.audit_bundle_plabsi=true;
+                        akses.audit_bundle_vap=true;
+                        akses.akun_host_to_host_bank_papua=true;
+                        akses.pembayaran_bank_papua=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1866,6 +1890,26 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=rs2.getBoolean("penilaian_awal_medis_ralan_tht");
                         akses.penilaian_psikologi=rs2.getBoolean("penilaian_psikologi");
                         akses.audit_cuci_tangan_medis=rs2.getBoolean("audit_cuci_tangan_medis");
+                        akses.audit_pembuangan_limbah=rs2.getBoolean("audit_pembuangan_limbah");
+                        akses.ruang_audit_kepatuhan=rs2.getBoolean("ruang_audit_kepatuhan");
+                        akses.audit_pembuangan_benda_tajam=rs2.getBoolean("audit_pembuangan_benda_tajam");
+                        akses.audit_penanganan_darah=rs2.getBoolean("audit_penanganan_darah");
+                        akses.audit_pengelolaan_linen_kotor=rs2.getBoolean("audit_pengelolaan_linen_kotor");
+                        akses.audit_penempatan_pasien=rs2.getBoolean("audit_penempatan_pasien");
+                        akses.audit_kamar_jenazah=rs2.getBoolean("audit_kamar_jenazah");
+                        akses.audit_bundle_iadp=rs2.getBoolean("audit_bundle_iadp");
+                        akses.audit_bundle_ido=rs2.getBoolean("audit_bundle_ido");
+                        akses.audit_fasilitas_kebersihan_tangan=rs2.getBoolean("audit_fasilitas_kebersihan_tangan");
+                        akses.audit_fasilitas_apd=rs2.getBoolean("audit_fasilitas_apd");
+                        akses.audit_pembuangan_limbah_cair_infeksius=rs2.getBoolean("audit_pembuangan_limbah_cair_infeksius");
+                        akses.audit_sterilisasi_alat=rs2.getBoolean("audit_sterilisasi_alat");
+                        akses.penilaian_awal_medis_ralan_psikiatri=rs2.getBoolean("penilaian_awal_medis_ralan_psikiatri");
+                        akses.persetujuan_penolakan_tindakan=rs2.getBoolean("persetujuan_penolakan_tindakan");
+                        akses.audit_bundle_isk=rs2.getBoolean("audit_bundle_isk");
+                        akses.audit_bundle_plabsi=rs2.getBoolean("audit_bundle_plabsi");
+                        akses.audit_bundle_vap=rs2.getBoolean("audit_bundle_vap");
+                        akses.akun_host_to_host_bank_papua=rs2.getBoolean("akun_host_to_host_bank_papua");
+                        akses.pembayaran_bank_papua=rs2.getBoolean("pembayaran_bank_papua");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2698,6 +2742,26 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_tht=false;
                         akses.penilaian_psikologi=false;
                         akses.audit_cuci_tangan_medis=false;
+                        akses.audit_pembuangan_limbah=false;
+                        akses.ruang_audit_kepatuhan=false;
+                        akses.audit_pembuangan_benda_tajam=false;
+                        akses.audit_penanganan_darah=false;
+                        akses.audit_pengelolaan_linen_kotor=false;
+                        akses.audit_penempatan_pasien=false;
+                        akses.audit_kamar_jenazah=false;
+                        akses.audit_bundle_iadp=false;
+                        akses.audit_bundle_ido=false;
+                        akses.audit_fasilitas_kebersihan_tangan=false;
+                        akses.audit_fasilitas_apd=false;
+                        akses.audit_pembuangan_limbah_cair_infeksius=false;
+                        akses.audit_sterilisasi_alat=false;
+                        akses.penilaian_awal_medis_ralan_psikiatri=false;
+                        akses.persetujuan_penolakan_tindakan=false;
+                        akses.audit_bundle_isk=false;
+                        akses.audit_bundle_plabsi=false;
+                        akses.audit_bundle_vap=false;
+                        akses.akun_host_to_host_bank_papua=false;
+                        akses.pembayaran_bank_papua=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3587,4 +3651,24 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_tht(){return akses.penilaian_awal_medis_ralan_tht;}
     public static boolean getpenilaian_psikologi(){return akses.penilaian_psikologi;}
     public static boolean getaudit_cuci_tangan_medis(){return akses.audit_cuci_tangan_medis;}
+    public static boolean getaudit_pembuangan_limbah(){return akses.audit_pembuangan_limbah;}
+    public static boolean getruang_audit_kepatuhan(){return akses.ruang_audit_kepatuhan;}
+    public static boolean getaudit_pembuangan_benda_tajam(){return akses.audit_pembuangan_benda_tajam;}
+    public static boolean getaudit_penanganan_darah(){return akses.audit_penanganan_darah;}
+    public static boolean getaudit_pengelolaan_linen_kotor(){return akses.audit_pengelolaan_linen_kotor;}
+    public static boolean getaudit_penempatan_pasien(){return akses.audit_penempatan_pasien;}
+    public static boolean getaudit_kamar_jenazah(){return akses.audit_kamar_jenazah;}
+    public static boolean getaudit_bundle_iadp(){return akses.audit_bundle_iadp;}
+    public static boolean getaudit_bundle_ido(){return akses.audit_bundle_ido;}
+    public static boolean getaudit_fasilitas_kebersihan_tangan(){return akses.audit_fasilitas_kebersihan_tangan;}
+    public static boolean getaudit_fasilitas_apd(){return akses.audit_fasilitas_apd;}
+    public static boolean getaudit_pembuangan_limbah_cair_infeksius(){return akses.audit_pembuangan_limbah_cair_infeksius;}
+    public static boolean getaudit_sterilisasi_alat(){return akses.audit_sterilisasi_alat;}
+    public static boolean getpenilaian_awal_medis_ralan_psikiatri(){return akses.penilaian_awal_medis_ralan_psikiatri;}
+    public static boolean getpersetujuan_penolakan_tindakan(){return akses.persetujuan_penolakan_tindakan;}
+    public static boolean getaudit_bundle_isk(){return akses.audit_bundle_isk;}
+    public static boolean getaudit_bundle_plabsi(){return akses.audit_bundle_plabsi;}
+    public static boolean getaudit_bundle_vap(){return akses.audit_bundle_vap;}
+    public static boolean getakun_host_to_host_bank_papua(){return akses.akun_host_to_host_bank_papua;}
+    public static boolean getpembayaran_bank_papua(){return akses.pembayaran_bank_papua;}
 }   

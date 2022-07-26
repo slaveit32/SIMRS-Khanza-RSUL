@@ -14,13 +14,13 @@ public class Update {
     
     public static String getLatestVersion() throws Exception
     {
-        URL= "https://raw.githubusercontent.com/aditsaga/SIMRS-Khanza-RSUL/master/changelog.txt";
+        URL= "https://raw.githubusercontent.com/slaveit32/SIMRS-Khanza-RSUL/master/changelog.txt";
         String data = getData(URL);
         return data.substring(data.indexOf("[version]")+9,data.indexOf("[/version]"));
     }
     public static String getWhatsNew() throws Exception
     {
-        URL= "https://raw.githubusercontent.com/aditsaga/SIMRS-Khanza-RSUL/master/changelog.txt";
+        URL= "https://raw.githubusercontent.com/slaveit32/SIMRS-Khanza-RSUL/master/changelog.txt";
         String data = getData(URL);
         return data.substring(data.indexOf("[history]")+9,data.indexOf("[/history]"));
     }

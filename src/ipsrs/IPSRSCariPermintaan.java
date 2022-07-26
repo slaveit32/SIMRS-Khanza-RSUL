@@ -1,4 +1,5 @@
 package ipsrs;
+import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,6 +8,8 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -14,10 +17,13 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -30,8 +36,13 @@ public class IPSRSCariPermintaan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  IPSRSBarang barang=new IPSRSBarang(null,false);
+    private BackgroundMusic music;
+    private boolean aktif=false,semua;
+    private Date now;
+    private int i,nilai_detik,permintaanbaru=0;
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+    private String nol_detik,detik,alarm="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -174,6 +185,17 @@ public class IPSRSCariPermintaan extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
+        try {
+            alarm=koneksiDB.ALARMNONMED();
+        } catch (Exception ex) {
+            alarm="no";
+        }
+        
+        if(alarm.equals("yes")){
+            jam();
+        }
+        
     }
 
     /** This method is called from within the constructor to
@@ -279,6 +301,12 @@ public class IPSRSCariPermintaan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -817,6 +845,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         } 
     }//GEN-LAST:event_ppTidakDisetujuiActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -1043,6 +1079,40 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
+                now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){
+                    permintaanbaru=0;
+                        tampil();
+                        for(i=0;i<tbDokter.getRowCount();i++){
+                            if((!tbDokter.getValueAt(i,0).toString().equals(""))&&tbDokter.getValueAt(i,4).toString().equals("Baru")){
+                                permintaanbaru++;
+                            }
+                        }
+                    if(permintaanbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();
+                        } catch (Exception ex) {
+                            System.out.println(ex);
+                        }
+                    }
+                }
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
     }
 
     public void emptTeks() {

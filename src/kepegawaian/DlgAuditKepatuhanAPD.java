@@ -71,7 +71,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         for (i = 0; i < 12; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(120);
             }else if(i==1){
                 column.setPreferredWidth(180);
             }else if(i==2){
@@ -1057,7 +1057,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                     "select audit_kepatuhan_apd.nik,pegawai.nama,pegawai.jbtn,audit_kepatuhan_apd.tindakan,audit_kepatuhan_apd.tanggal,audit_kepatuhan_apd.topi,"+
                     "audit_kepatuhan_apd.masker,audit_kepatuhan_apd.kacamata,audit_kepatuhan_apd.sarungtangan,audit_kepatuhan_apd.apron,audit_kepatuhan_apd.sepatu "+
                     "from audit_kepatuhan_apd inner join pegawai on audit_kepatuhan_apd.nik=pegawai.nik where audit_kepatuhan_apd.tanggal between ? and ? "+
-                    "and (audit_kepatuhan_apd.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? audit_kepatuhan_apd.tindakan like ?) order by audit_kepatuhan_apd.tanggal");
+                    "and (audit_kepatuhan_apd.nik like ? or pegawai.nama like ? or pegawai.jbtn like ? or audit_kepatuhan_apd.tindakan like ?) order by audit_kepatuhan_apd.tanggal");
             }
                 
             try {
@@ -1100,7 +1100,15 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "Rata-rata Penilaian :","","","","",Math.round((ttltopi/i)*100)+" %",Math.round((ttlmasker/i)*100)+" %",Math.round((ttlkacamata/i)*100)+" %",
+                        "","Ya",":","","",""+ttltopi,""+ttlmasker,""+ttlkacamata,""+ttlsarungtangan,""+ttlapron,""+ttlsepatu,
+                        ""+(ttltopi+ttlmasker+ttlkacamata+ttlsarungtangan+ttlapron+ttlsepatu)
+                    });
+                    tabMode.addRow(new String[]{
+                        "","Tidak",":","","",""+(i-ttltopi),""+(i-ttlmasker),""+(i-ttlkacamata),""+(i-ttlsarungtangan),""+(i-ttlapron),""+(i-ttlsepatu),
+                        ""+((i-ttltopi)+(i-ttlmasker)+(i-ttlkacamata)+(i-ttlsarungtangan)+(i-ttlapron)+(i-ttlsepatu))
+                    });
+                    tabMode.addRow(new String[]{
+                        "","Rata-rata",":","","",Math.round((ttltopi/i)*100)+" %",Math.round((ttlmasker/i)*100)+" %",Math.round((ttlkacamata/i)*100)+" %",
                         Math.round((ttlsarungtangan/i)*100)+" %",Math.round((ttlapron/i)*100)+" %",Math.round((ttlsepatu/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
@@ -1117,7 +1125,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText(""+i);
     }
     
     
@@ -1139,17 +1147,19 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Topi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            Masker.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KacaMata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            SarungTangan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Apron.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Sepatu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                Topi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                Masker.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                KacaMata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                SarungTangan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                Apron.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+                Sepatu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     

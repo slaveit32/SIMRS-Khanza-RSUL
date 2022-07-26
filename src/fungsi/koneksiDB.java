@@ -127,6 +127,26 @@ public class koneksiDB {
         return var;
     }
     
+    public static String USERHYBRIDWEB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERHYBRIDWEB"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASHYBRIDWEB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASHYBRIDWEB"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String HYBRIDWEB(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -181,6 +201,26 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=prop.getProperty("ALARMLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMNONMED(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMNONMED");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMALKES(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMALKES");
         }catch(Exception e){
             var=""; 
         }
@@ -880,7 +920,7 @@ public class koneksiDB {
     public static String AKTIFKANTRACKSQL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("AKTIFKANTRACKSQL");
+            var=EnkripsiAES.decrypt(prop.getProperty("AKTIFKANTRACKSQL"));
         }catch(Exception e){
             var=""; 
         }

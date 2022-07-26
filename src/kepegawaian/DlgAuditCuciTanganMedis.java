@@ -62,7 +62,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "Tanggal Audit","NIP/Kode","Dokter/Paramedis","Sebelum Menyentuh Pasien","Sebelum Tehnik Aseptik",
-            "Setelah Terpapar Cairan Tubuh Pasien","Setelah Kontak Dengan Pasien","Setelah Kontak Dengan Lingkungan Pasien"
+            "Setelah Terpapar Cairan Tubuh Pasien","Setelah Kontak Dengan Pasien","Setelah Kontak Dengan Lingkungan Pasien",
+            "Ttl.Nilai(%)"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,10 +73,10 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(120);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
@@ -90,6 +91,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 column.setPreferredWidth(156);
             }else if(i==7){
                 column.setPreferredWidth(215);
+            }else if(i==8){
+                column.setPreferredWidth(68);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -374,7 +377,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -388,7 +391,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -458,7 +461,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-06-2022" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -596,7 +599,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         FormInput.add(SetelahTerpapar);
         SetelahTerpapar.setBounds(330, 70, 78, 23);
 
-        jLabel28.setText("Moment :");
+        jLabel28.setText("Audit :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 40, 60, 23);
@@ -997,8 +1000,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                     "audit_cuci_tangan_medis.sebelum_tehnik_aseptik,audit_cuci_tangan_medis.setelah_terpapar_cairan_tubuh_pasien,"+
                     "audit_cuci_tangan_medis.setelah_kontak_dengan_pasien,audit_cuci_tangan_medis.setelah_kontak_dengan_lingkungan_pasien "+
                     "from audit_cuci_tangan_medis inner join pegawai on audit_cuci_tangan_medis.nik=pegawai.nik "+
-                    "where audit_cuci_tangan_medis.tanggal between ? and ? "+
-                    "and (audit_cuci_tangan_medis.nik like ? or pegawai.nama like ?) order by audit_cuci_tangan_medis.tanggal");
+                    "where audit_cuci_tangan_medis.tanggal between ? and ? and (audit_cuci_tangan_medis.nik like ? or pegawai.nama like ?) order by audit_cuci_tangan_medis.tanggal");
             }
                 
             try {
@@ -1037,7 +1039,17 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 i=i-1;
                 if(i>0){
                     tabMode.addRow(new String[]{
-                        "Rata-rata Penilaian :","","",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
+                        "","Ya",":",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
+                        ""+ttlsetelah_kontak_dengan_pasien,""+ttlsetelah_kontak_dengan_lingkungan_pasien,""+(ttlsebelum_menyentuh_pasien+ttlsebelum_tehnik_aseptik+
+                        ttlsetelah_terpapar_cairan_tubuh_pasien+ttlsetelah_kontak_dengan_pasien+ttlsetelah_kontak_dengan_lingkungan_pasien)
+                    });
+                    tabMode.addRow(new String[]{
+                        "","Tidak",":",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
+                        ""+(i-ttlsetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien),""+((i-ttlsebelum_menyentuh_pasien)+(i-ttlsebelum_tehnik_aseptik)+
+                        (i-ttlsetelah_terpapar_cairan_tubuh_pasien)+(i-ttlsetelah_kontak_dengan_pasien)+(i-ttlsetelah_kontak_dengan_lingkungan_pasien))
+                    });
+                    tabMode.addRow(new String[]{
+                        "","Rata-rata",":",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
                         Math.round((ttlsetelah_kontak_dengan_pasien/i)*100)+" %",Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });
                 }
@@ -1054,7 +1066,8 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        
+        LCount.setText(""+i);
     }
     
     public void emptTeks() {
@@ -1071,14 +1084,16 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            SebelumMenyentuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            SebelumTehnik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SetelahTerpapar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            SetelahKontak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            SetelahLingkungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            if(!tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("")){
+                Nip.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                NamaPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                SebelumMenyentuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+                SebelumTehnik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+                SetelahTerpapar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                SetelahKontak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+                SetelahLingkungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+                Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            }
         }
     }
     

@@ -16,13 +16,14 @@
 	<parameter name="norm" class="java.lang.String"/>
 	<parameter name="no_rawat" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT reg_periksa.no_rawat, pasien.alamat, pasien.no_tlp FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis WHERE no_rawat = '$P{no_rawat}']]>
+		<![CDATA[SELECT reg_periksa.no_rawat, pasien.alamat, pasien.no_tlp, pasien.jk FROM reg_periksa INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis WHERE no_rawat = '$P{no_rawat}']]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="alamat" class="java.lang.String"/>
 	<field name="no_tlp" class="java.lang.String"/>
+	<field name="jk" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -125,7 +126,7 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="30" y="18" width="116" height="17" uuid="f0eb09b3-dd74-4250-b754-8696d10cf5d8">
+				<reportElement x="30" y="27" width="116" height="8" uuid="f0eb09b3-dd74-4250-b754-8696d10cf5d8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -164,7 +165,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="18" width="20" height="8" uuid="309b5d3e-9382-45eb-926d-9bfc963be8ee">
+				<reportElement x="7" y="27" width="20" height="8" uuid="309b5d3e-9382-45eb-926d-9bfc963be8ee">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -175,7 +176,7 @@
 				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="27" y="18" width="3" height="8" uuid="c402521c-fa0d-4f8e-862d-97c5d4ef4e78">
+				<reportElement x="27" y="27" width="3" height="8" uuid="c402521c-fa0d-4f8e-862d-97c5d4ef4e78">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -205,6 +206,37 @@
 				</textElement>
 				<text><![CDATA[No. Tlp]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="27" y="19" width="3" height="8" uuid="74f41850-63ab-4797-b93a-900cb62669b4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="6"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="19" width="20" height="8" uuid="03baed41-bd73-4700-9c32-569f86e4ddad">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="6"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[JK]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="19" width="45" height="8" uuid="eebcffe8-00b4-49e5-acd1-d55651948d8a">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
