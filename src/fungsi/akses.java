@@ -185,7 +185,8 @@ public final class akses {
             audit_pembuangan_benda_tajam=false,audit_penanganan_darah=false,audit_pengelolaan_linen_kotor=false,audit_penempatan_pasien=false,
             audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false,audit_fasilitas_apd=false,
             audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false,
-            audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false;
+            audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false,
+            penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,edit_rujukan_masuk=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1056,10 +1057,20 @@ public final class akses {
                         akses.audit_bundle_vap=true;
                         akses.akun_host_to_host_bank_papua=true;
                         akses.pembayaran_bank_papua=true;
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=true;
+                        akses.penilaian_awal_medis_ralan_mata=true;
+                        akses.penilaian_awal_medis_ralan_neurologi=true;
+                        akses.sirkulasi_obat6=true;
+                        akses.edit_rujukan_masuk=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
                         akses.kode=user;
+                        if("P0063".equals(akses.kode)){
+                        akses.edit_rujukan_masuk=true;
+                        } else {
+                        akses.edit_rujukan_masuk=false;
+                        }
                         akses.penyakit=rs2.getBoolean("penyakit");
                         akses.obat_penyakit=rs2.getBoolean("obat_penyakit");
                         akses.dokter=rs2.getBoolean("dokter");
@@ -1910,6 +1921,10 @@ public final class akses {
                         akses.audit_bundle_vap=rs2.getBoolean("audit_bundle_vap");
                         akses.akun_host_to_host_bank_papua=rs2.getBoolean("akun_host_to_host_bank_papua");
                         akses.pembayaran_bank_papua=rs2.getBoolean("pembayaran_bank_papua");
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=rs2.getBoolean("penilaian_awal_medis_ralan_penyakit_dalam");
+                        akses.penilaian_awal_medis_ralan_mata=rs2.getBoolean("penilaian_awal_medis_ralan_mata");
+                        akses.penilaian_awal_medis_ralan_neurologi=rs2.getBoolean("penilaian_awal_medis_ralan_neurologi");
+                        akses.sirkulasi_obat6=rs2.getBoolean("sirkulasi_obat6");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2762,6 +2777,11 @@ public final class akses {
                         akses.audit_bundle_vap=false;
                         akses.akun_host_to_host_bank_papua=false;
                         akses.pembayaran_bank_papua=false;
+                        akses.penilaian_awal_medis_ralan_penyakit_dalam=false;
+                        akses.penilaian_awal_medis_ralan_mata=false;
+                        akses.penilaian_awal_medis_ralan_neurologi=false;
+                        akses.sirkulasi_obat6=false;
+                        akses.edit_rujukan_masuk=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3671,4 +3691,9 @@ public final class akses {
     public static boolean getaudit_bundle_vap(){return akses.audit_bundle_vap;}
     public static boolean getakun_host_to_host_bank_papua(){return akses.akun_host_to_host_bank_papua;}
     public static boolean getpembayaran_bank_papua(){return akses.pembayaran_bank_papua;}
+    public static boolean getpenilaian_awal_medis_ralan_penyakit_dalam(){return akses.penilaian_awal_medis_ralan_penyakit_dalam;}
+    public static boolean getpenilaian_awal_medis_ralan_mata(){return akses.penilaian_awal_medis_ralan_mata;}
+    public static boolean getpenilaian_awal_medis_ralan_neurologi(){return akses.penilaian_awal_medis_ralan_neurologi;}
+    public static boolean getsirkulasi_obat6(){return akses.sirkulasi_obat6;}
+    public static boolean geteditrujukan_masuk(){return akses.edit_rujukan_masuk;}
 }   

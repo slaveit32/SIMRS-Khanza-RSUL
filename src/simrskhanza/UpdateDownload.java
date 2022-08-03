@@ -70,7 +70,7 @@ public class UpdateDownload extends JFrame{
         sp = new JScrollPane();
         sp.setViewportView(outText);
         
-        launch = new JButton("Jalankan Aplikasi");
+        launch = new JButton("Selesai");
         launch.setEnabled(false);
         launch.addActionListener(new ActionListener(){
 
@@ -80,14 +80,14 @@ public class UpdateDownload extends JFrame{
         });
         pan2.add(launch);
 
-        cancle = new JButton("Exit");
-        cancle.addActionListener(new ActionListener(){
-
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        pan2.add(cancle);
+//        cancle = new JButton("Exit");
+//        cancle.addActionListener(new ActionListener(){
+//
+//            public void actionPerformed(ActionEvent e) {
+//                System.exit(0);
+//            }
+//        });
+//        pan2.add(cancle);
         pan1.add(sp,BorderLayout.CENTER);
         pan1.add(pan2,BorderLayout.SOUTH);
 

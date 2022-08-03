@@ -680,7 +680,7 @@ public class koneksiDB {
     public static String KAMARAKTIFRANAP(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("KAMARAKTIFRANAP");
+            var=prop.getProperty("KAMARAKTIFRANAP").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -690,7 +690,7 @@ public class koneksiDB {
     public static String DOKTERAKTIFKASIRRALAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("DOKTERAKTIFKASIRRALAN");
+            var=prop.getProperty("DOKTERAKTIFKASIRRALAN").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -700,7 +700,7 @@ public class koneksiDB {
     public static String POLIAKTIFKASIRRALAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("POLIAKTIFKASIRRALAN");
+            var=prop.getProperty("POLIAKTIFKASIRRALAN").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -710,7 +710,7 @@ public class koneksiDB {
     public static String RUANGANAKTIFINVENTARIS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("RUANGANAKTIFINVENTARIS");
+            var=prop.getProperty("RUANGANAKTIFINVENTARIS").replaceAll("'","");;
         }catch(Exception e){
             var=""; 
         }
@@ -950,7 +950,7 @@ public class koneksiDB {
     public static String DEPOAKTIFOBAT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("DEPOAKTIFOBAT");
+            var=prop.getProperty("DEPOAKTIFOBAT").replaceAll("'","");
         }catch(Exception e){
             var=""; 
         }

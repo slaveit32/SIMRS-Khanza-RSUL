@@ -46,6 +46,9 @@
     
     function validTeks($data){
         $save=str_replace("'","",$data);
+        $save=str_replace("\\","",$save);
+        $save=str_replace(";","",$save);
+        $save=str_replace("`","",$save);
         return $save;
     }
     
@@ -561,6 +564,12 @@
         $secret_key     = 'Bar12345Bar12345'; 
         $secret_iv      = 'sayangsamakhanza';
         return openssl_decrypt(base64_decode($input), 'AES-128-CBC', $secret_key, OPENSSL_RAW_DATA, $secret_iv);
+    }
+    
+    function encrypt($input){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        return base64_encode(openssl_encrypt($input, 'AES-128-CBC', $secret_key, OPENSSL_RAW_DATA, $secret_iv));
     }
     
     function Terbilang($x){

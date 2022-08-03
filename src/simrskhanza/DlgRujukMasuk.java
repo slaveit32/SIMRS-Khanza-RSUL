@@ -1922,7 +1922,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         BtnSimpan.setEnabled(akses.getrujukan_masuk());
         BtnHapus.setEnabled(akses.getrujukan_masuk());
         BtnPrint.setEnabled(akses.getrujukan_masuk());
-        BtnEdit.setEnabled(akses.getrujukan_masuk());
+        BtnEdit.setEnabled(akses.geteditrujukan_masuk());
         
     }
     

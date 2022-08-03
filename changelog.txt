@@ -1,2 +1,2 @@
-[version]1.1[/version]
-[history]Tersedia Update Versi 1.1, Auto update ke repository Online.[/history]
+[version]1.2[/version]
+[history]Tersedia Update Versi 1.2, Penilaian Awal Medis Mata dan Penyakit Dalam.[/history]
