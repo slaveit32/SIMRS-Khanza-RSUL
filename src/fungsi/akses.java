@@ -186,7 +186,8 @@ public final class akses {
             audit_kamar_jenazah=false,audit_bundle_iadp=false,audit_bundle_ido=false,audit_fasilitas_kebersihan_tangan=false,audit_fasilitas_apd=false,
             audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false,
             audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false,
-            penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,edit_rujukan_masuk=false;
+            penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,
+            penilaian_awal_medis_ralan_orthopedi=false,edit_rujukan_masuk=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1061,6 +1062,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_mata=true;
                         akses.penilaian_awal_medis_ralan_neurologi=true;
                         akses.sirkulasi_obat6=true;
+                        akses.penilaian_awal_medis_ralan_orthopedi=true;
                         akses.edit_rujukan_masuk=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
@@ -1925,6 +1927,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_mata=rs2.getBoolean("penilaian_awal_medis_ralan_mata");
                         akses.penilaian_awal_medis_ralan_neurologi=rs2.getBoolean("penilaian_awal_medis_ralan_neurologi");
                         akses.sirkulasi_obat6=rs2.getBoolean("sirkulasi_obat6");
+                        akses.penilaian_awal_medis_ralan_orthopedi=rs2.getBoolean("penilaian_awal_medis_ralan_orthopedi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2781,6 +2784,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_mata=false;
                         akses.penilaian_awal_medis_ralan_neurologi=false;
                         akses.sirkulasi_obat6=false;
+                        akses.penilaian_awal_medis_ralan_orthopedi=false;
                         akses.edit_rujukan_masuk=false;
                     }
                 } catch (Exception e) {
@@ -3695,5 +3699,6 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_mata(){return akses.penilaian_awal_medis_ralan_mata;}
     public static boolean getpenilaian_awal_medis_ralan_neurologi(){return akses.penilaian_awal_medis_ralan_neurologi;}
     public static boolean getsirkulasi_obat6(){return akses.sirkulasi_obat6;}
+    public static boolean gpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
     public static boolean geteditrujukan_masuk(){return akses.edit_rujukan_masuk;}
 }   

@@ -1,2 +1,2 @@
 [version]1.2[/version]
-[history]Tersedia Update Versi 1.2, Penilaian Awal Medis Mata dan Penyakit Dalam.[/history]
+[history]Tersedia Update Versi 1.3, Penilaian awal medis neurologi dan awal medis orthopedi.[/history]
