@@ -103,7 +103,7 @@ public class UpdateDownload extends JFrame{
             public void run()
             {
                 try {
-                    URL= "https://raw.githubusercontent.com/slaveit32/SIMRS-Khanza-RSUL/master/changelog.txt";
+                    URL= "http://192.168.1.19/webapps/changelog.txt";
                     String data = getData(URL);
                     VERSION=data.substring(data.indexOf("[version]")+9,data.indexOf("[/version]"));
                     downloadFile("https://github.com/slaveit32/SIMRS-Khanza-RSUL/releases/download/"+VERSION+"/SIMRSKhanza.zip");

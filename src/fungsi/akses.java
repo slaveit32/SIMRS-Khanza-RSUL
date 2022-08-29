@@ -187,7 +187,8 @@ public final class akses {
             audit_pembuangan_limbah_cair_infeksius=false,audit_sterilisasi_alat=false,penilaian_awal_medis_ralan_psikiatri=false,persetujuan_penolakan_tindakan=false,
             audit_bundle_isk=false,audit_bundle_plabsi=false,audit_bundle_vap=false,akun_host_to_host_bank_papua=false,pembayaran_bank_papua=false,
             penilaian_awal_medis_ralan_penyakit_dalam=false,penilaian_awal_medis_ralan_mata=false,penilaian_awal_medis_ralan_neurologi=false,sirkulasi_obat6=false,
-            penilaian_awal_medis_ralan_orthopedi=false,edit_rujukan_masuk=false;
+            penilaian_awal_medis_ralan_orthopedi=false,penilaian_awal_medis_ralan_bedah=false,integrasi_khanza_health_services=false,soap_ralan_tni=false,
+            soap_ranap_tni=false,jumlah_pengunjung_ralan_tni=false,laporan_penyakit_tni=false,catatan_keperawatan_ranap=false,edit_rujukan_masuk=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1063,6 +1064,13 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_neurologi=true;
                         akses.sirkulasi_obat6=true;
                         akses.penilaian_awal_medis_ralan_orthopedi=true;
+                        akses.penilaian_awal_medis_ralan_bedah=true;
+                        akses.integrasi_khanza_health_services=true;
+                        akses.soap_ralan_tni=true;
+                        akses.soap_ranap_tni=true;
+                        akses.jumlah_pengunjung_ralan_tni=true;
+                        akses.laporan_penyakit_tni=true;
+                        akses.catatan_keperawatan_ranap=true;
                         akses.edit_rujukan_masuk=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
@@ -1928,6 +1936,13 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_neurologi=rs2.getBoolean("penilaian_awal_medis_ralan_neurologi");
                         akses.sirkulasi_obat6=rs2.getBoolean("sirkulasi_obat6");
                         akses.penilaian_awal_medis_ralan_orthopedi=rs2.getBoolean("penilaian_awal_medis_ralan_orthopedi");
+                        akses.penilaian_awal_medis_ralan_bedah=rs2.getBoolean("penilaian_awal_medis_ralan_bedah");
+                        akses.integrasi_khanza_health_services=rs2.getBoolean("integrasi_khanza_health_services");
+                        akses.soap_ralan_tni=rs2.getBoolean("soap_ralan_tni");
+                        akses.soap_ranap_tni=rs2.getBoolean("soap_ranap_tni");
+                        akses.jumlah_pengunjung_ralan_tni=rs2.getBoolean("jumlah_pengunjung_ralan_tni");
+                        akses.laporan_penyakit_tni=rs2.getBoolean("laporan_penyakit_tni");
+                        akses.catatan_keperawatan_ranap=rs2.getBoolean("catatan_keperawatan_ranap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2785,6 +2800,13 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_neurologi=false;
                         akses.sirkulasi_obat6=false;
                         akses.penilaian_awal_medis_ralan_orthopedi=false;
+                        akses.penilaian_awal_medis_ralan_bedah=false;
+                        akses.integrasi_khanza_health_services=false;
+                        akses.soap_ralan_tni=false;
+                        akses.soap_ranap_tni=false;
+                        akses.jumlah_pengunjung_ralan_tni=false;
+                        akses.laporan_penyakit_tni=false;
+                        akses.catatan_keperawatan_ranap=false;
                         akses.edit_rujukan_masuk=false;
                     }
                 } catch (Exception e) {
@@ -3699,6 +3721,13 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_mata(){return akses.penilaian_awal_medis_ralan_mata;}
     public static boolean getpenilaian_awal_medis_ralan_neurologi(){return akses.penilaian_awal_medis_ralan_neurologi;}
     public static boolean getsirkulasi_obat6(){return akses.sirkulasi_obat6;}
-    public static boolean gpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
+    public static boolean getpenilaian_awal_medis_ralan_orthopedi(){return akses.penilaian_awal_medis_ralan_orthopedi;}
+    public static boolean getpenilaian_awal_medis_ralan_bedah(){return akses.penilaian_awal_medis_ralan_bedah;}
+    public static boolean getintegrasi_khanza_health_services(){return akses.integrasi_khanza_health_services;}
+    public static boolean getsoap_ralan_tni(){return akses.soap_ralan_tni;}
+    public static boolean getsoap_ranap_tni(){return akses.soap_ranap_tni;}
+    public static boolean getjumlah_pengunjung_ralan_tni(){return akses.jumlah_pengunjung_ralan_tni;}
+    public static boolean getlaporan_penyakit_tni(){return akses.laporan_penyakit_tni;}
+    public static boolean getcatatan_keperawatan_ranap(){return akses.catatan_keperawatan_ranap;}
     public static boolean geteditrujukan_masuk(){return akses.edit_rujukan_masuk;}
 }   
